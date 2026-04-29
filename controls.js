@@ -1,27 +1,32 @@
+import { db } from "./config.js"//-> conectamos con la base de datos
 
-import { db } from "./config.js"
-
+//DECLARACION DE FUNCION OBTENER USUARIOS
 const getUsers = async () => {
     const q = `SELECT * FROM users` // sentencia sql para obtener todos los usuarios de la tabla users
     const [response] = await db.query(q)
+    if (response.length === 0) {
+        return "No tienes ningun contacto"
+    }
     return response
 }
 
-//DECLARACION DE FUNCION ()
+//DECLARACION DE FUNCION CREAR UN USUARIO
 const createUsers = async (username, email, password) => {
-    // Validar: 
+    // VALIDACIONES:  
     if (username === undefined || email === undefined || password === undefined) {
         return "Datos INVALIDOS!!...los datos estan incorrectos"
     }
-    if (password.length < 8) {
-        return "tu contraseña debe tener como minimo 8 caracteres"
-    }
-    const soloLetras = /^[a-zA-Z]+$/;
 
+     const soloLetras =  /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
     if (!soloLetras.test(username)) {
         return "El username solo puede tener caracteres alfabeticos";
     }
-    if (!email.includes("@") || !email.endsWith("@gmail.com")) {
+
+    if (password.length < 8) {
+        return "tu contraseña debe tener como minimo 8 caracteres"
+    }
+   
+    if (!email.includes("@") || !email.endsWith("@gmail.com") && !email.endsWith("@hotmail.com") && !email.endsWith("@icloud.com")) {
         return "ERROR!! email invalido"
     }
     //PERSISTIR EN BASE DE DATOS:
@@ -33,9 +38,7 @@ const createUsers = async (username, email, password) => {
     // }
 
     const q = `INSERT INTO users (id, username, email, password) VALUES (?,?,?,?)` //query => consulta a una db
-    const [response] = await db.query(q, [crypto.randomUUID(), username, email, password]) //Ejecutá la consulta q en la base de datos,
-    // reemplazando los ? con estos valores,
-    // y esperá a que termine antes de continuar
+    const [response] = await db.query(q, [crypto.randomUUID(), username, email, password]) //Ejecutá la consulta q en la base de datos, reemplazando los ? con estos valores, y esperá a que termine antes de continuar
     if (response.serverStatus === 2) {
         return "Usuario creado con exito!!"
     } else {
@@ -45,16 +48,16 @@ const createUsers = async (username, email, password) => {
 
 const updateUsers = async (id, update) => {
 
-    if(!id){
+    if (!id) {
         return "Id requerido!"
     }
-   
+
     const q = `
     UPDATE users 
     SET username = ?, email = ?, password = ?
     WHERE id = ?
     `;
-   const { username, email, password } = update
+    const { username, email, password } = update
     const [response] = await db.query(q, [
         username,
         email,

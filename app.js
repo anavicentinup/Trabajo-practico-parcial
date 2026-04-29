@@ -1,9 +1,8 @@
 import {getUsers, createUsers, updateUsers, deleteUsers} from "./controls.js"
 
-//node app.js crear juancito@gmail.com
 const argv = process.argv
 const params = argv.slice(2)//-> elimina los dos primeros argumentos que son node y la ruta
-console.log(params[0])//-> deja a la operacion en primer lugar
+console.log("seleccionaste la operacion =>",params[0])//-> deja a la operacion en primer lugar
 let resultado  
 const operacion = params[0]
 
