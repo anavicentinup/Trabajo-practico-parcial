@@ -38,9 +38,9 @@ Este proyecto es una práctica de backend donde se trabaja con:
 
 git clone 
 
-2. Entrar en la carpeta: cd App.js
+2. Entrar en la carpeta.
 
-3. Instalar dependencias:
+3. Instalar dependencias.
 
 npm install
 
@@ -56,10 +56,10 @@ Y una tabla `users`:
 
 ```sql
 CREATE TABLE users (
-  id VARCHAR(100) PRIMARY KEY,
-  username VARCHAR(50),
-  email VARCHAR(100),
-  password VARCHAR(100)
+  id VARCHAR(40) PRIMARY KEY,
+  username VARCHAR(40) NOT NULL,
+  email VARCHAR(40) NOT NULL UNIQUE,
+  password VARCHAR(40) NOT NULL
 );
 ```
 
