@@ -102,7 +102,7 @@ Validaciones:
 npm run dev update username email password id
 
 Ejemplo:
-node app.js update "anabella Vicentin" ana@gmail.com pepe12345 (id:**********)
+node app.js update "anabella Vicentin" ana@gmail.com pepe12345 (id:**********)  
 sugerencia: solicitar la lista con "get" para modificar el correcto id.
 ---
 
@@ -111,7 +111,7 @@ sugerencia: solicitar la lista con "get" para modificar el correcto id.
 npm run dev delete username
 
 Ejemplo:
-node app.js delete (nombre completo) "anabella vicentin"
+node app.js delete (nombre completo) "anabella vicentin"  
 sugerencia: solicitar la lista con "get" para eliminar el correcto.
 
 ---
