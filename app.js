@@ -21,7 +21,29 @@ switch(operacion){
         resultado = await deleteUsers(params[1])
         break
     default:
-        resultado = "operacion invalida"
+        resultado = `
+╔══════════════════════════════════════════════════╗
+║ Bienvenido a la agenda de AnaMaster              ║
+╠══════════════════════════════════════════════════╣
+║                                                  ║
+║ Operaciones disponibles:                         ║
+║ ver los usuarios:  node app.js get               ║
+║                                                  ║          
+║ agregar un usuario:                              ║
+║   node app.js add <username> <email> <password>  ║                                                
+║                                                  ║
+║ modificar un usuario:                            ║
+║   node app.js update  <username> <email>         ║
+║                           <password> <id>        ║
+║                                                  ║
+║ eliminar un usuario:                             ║
+║   node app.js delete <id>                        ║ 
+║                                                  ║ 
+║ Recuerda que debes proporcionar los datos        ║
+║ correctos, todos son requeridos y presta atencion║
+║ a los errores.                                   ║                      
+╚══════════════════════════════════════════════════╝
+  `
 
 }
 
