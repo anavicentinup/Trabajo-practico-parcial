@@ -34,7 +34,7 @@ Este proyecto es una práctica de backend donde se trabaja con:
 
 ## 🚀 Instalación
 
-1. Clonar el repositorio:
+1. Clonar el repositorio: https://github.com/anavicentinup/Trabajo-practico-parcial.git
 
 git clone 
 
