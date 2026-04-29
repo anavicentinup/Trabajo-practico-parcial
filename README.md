@@ -28,7 +28,7 @@ Este proyecto es una práctica de backend donde se trabaja con:
 * JavaScript
 * Node.js
 * MySQL
-* mysql2 (promesas)
+* mysql2 (promesas: async-await)
 
 ---
 
@@ -67,58 +67,59 @@ Configurar conexión en `config.js`:
 
 * host: localhost
 * user: root
-* password: (vacío o el tuyo)
+* password: (vacío "" o el tuyo)
 * database: cli_users
 
 ---
 
 ## ▶️ Uso
 
-Ejecutar comandos desde la terminal:
+Ejecutar comandos desde la terminal o accediendo desde la carpeta app.js con la terminal
 
 ### 📌 Obtener usuarios
 
-node app.js get
+npm run dev get
 
 ---
 
 ### ➕ Crear usuario
 
-node app.js add username email password
+npm run dev add username email password
 
 Ejemplo:
 node app.js add Anabella ana@gmail.com pepe12345
 
 Validaciones:
 
-* Username solo letras
-* Email debe ser @gmail.com
-* Password mínimo 8 caracteres
-
+* Username solo letras, puede ser nombre y apellido entre "".
+* Email debe ser @gmail.com, @hotmal.com o @icloud.com.
+* Password mínimo 8 caracteres.
+* Todos los datos son requeridos.
 ---
 
 ### ✏️ Actualizar usuario
 
-node app.js update username email password id
+npm run dev update username email password id
 
 Ejemplo:
 node app.js update "anabella Vicentin" ana@gmail.com pepe12345 (id:**********)
-
+sugerencia: solicitar la lista con "get" para modificar el correcto id.
 ---
 
 ### ❌ Eliminar usuario
 
-node app.js delete username
+npm run dev delete username
 
 Ejemplo:
 node app.js delete (nombre completo) "anabella vicentin"
+sugerencia: solicitar la lista con "get" para eliminar el correcto.
 
 ---
 
 ## 📂 Estructura del proyecto
 
-* app.js → lógica principal y CLI
-* controls.js → funciones CRUD
+* app.js → lógica principal y CLI → manejo de argumentos y ejecucion de operaciones.
+* controls.js → funciones CRUD → lógica de negocio
 * config.js → conexión a base de datos
 * package.json → configuración del proyecto
 
